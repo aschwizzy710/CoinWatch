@@ -14,5 +14,8 @@
       });
   }
 
+    _.find(coins, function(o){
+      return o.name === "Bitcoin";
+    });
 
 }());
