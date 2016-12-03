@@ -1,0 +1,18 @@
+body {
+  background-color: #333333;
+}
+
+.main-info {
+  color: white;
+  border: 5px solid white;
+  padding: 100px;
+}
+
+.fat-row {
+  margin-top: 50px;
+}
+
+.plump-row {
+  margin-top: 150px;
+  margin-bottom: 150px;
+}
