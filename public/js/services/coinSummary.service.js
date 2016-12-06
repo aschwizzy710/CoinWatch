@@ -8,7 +8,9 @@
     init();
     var coins = [];
     return {
-      get: getAllCoins
+      get: getAllCoins,
+      // create: createSavedCoin,
+      // delete: deleteSavedCoin
     };
 
     function init(){

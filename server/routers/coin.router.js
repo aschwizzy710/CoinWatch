@@ -7,6 +7,19 @@ var bodyParser = require('body-parser');
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({extended: true}));
 
+router.get('/coins', function(req, res){
+  Coin.find({}, function(err, foundCoins){
+    if(err){
+      res.status(500).json({
+        err: err
+      });
+    }
+    res.status(200).json({
+      coins: foundCoins
+    });
+  });
+});
+
 router.get('/coins/:name', function(req, res){
   Coin.find({ name: req.params.name }, function(err, foundCoin){
     if(err){
@@ -35,7 +48,7 @@ router.post('/coins', function(req, res){
   });
 });
 router.delete('/coins/:name', function(req, res){
-  
+
 });
 
 module.exports = router;
