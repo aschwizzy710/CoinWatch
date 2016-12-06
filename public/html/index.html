@@ -16,7 +16,7 @@
       <button ng-click="searchCoins(coinName)" class="btn btn-success">Get Coin</button>
       </div>
       <div class="row main-info plump-row">
-        <div class="col-md-4">
+        <div class="col-md-4" ng-show="widgetLookup[selected.name] || url("http://placehold.it/350x150")">
           <img ng-src="{{ widgetLookup[selected.name] }}"   alt="" />
         </div>
         <div class="col-md-8">
@@ -26,7 +26,7 @@
           Market Cap: {{ selected.market_cap_usd | currency}} <br>
           Price (USD/BTC): {{ selected.price_usd | currency }} {{ selected.price_btc | currency:"Ƀ " }} <br>
           % Change (24 Hr): {{ selected.percent_change_24h }}
-      
+
         </div>
       </div>
 
