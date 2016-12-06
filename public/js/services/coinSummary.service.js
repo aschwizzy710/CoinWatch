@@ -23,5 +23,14 @@
     function getAllCoins(){
       return coins;
     }
+    function createSavedCoin(coin){
+      $http.post('/coins', coin)
+          .then(function(response){
+            coins.push(coin);
+          })
+          .catch(function(err){
+            console.log(err);
+          });
+    }
   }
 }());
