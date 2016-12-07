@@ -12,15 +12,15 @@
       <h1><em><strong><span style="color: white;">Coin</span><span style="color: green;">Watch</span></strong></em></h1>
       </div>
       <div class="fat-row">
-      <input type="text" ng-model="coinName">
-      <button ng-click="searchCoins(coinName)" class="btn btn-success">Get Coin</button>
-      <button ng-click="saveCoin(coinName)" class="btn btn-danger">Add to Watch List</button>
+      <input type="text" ng-model="coin.name">
+      <button ng-click="searchCoins(coin.name)" class="btn btn-success">Get Coin</button>
+      <button ng-click="toggle(saveCoin(coin))" class="btn btn-danger">Add to Watch List</button>
       </div>
       <div class="row main-info plump-row">
-        <div class="col-md-4" ng-show="widgetLookup[selected.name] || 'http://placehold.it/350x150'">
+        <div class="col-md-4" ng-show="widgetLookup[selected.name] || 'http://placehold.it/350x150'"> <!-- Placeholder not working -->
           <img ng-src="{{ widgetLookup[selected.name] }}"   alt="" />
         </div>
-        <div class="col-md-8">
+        <div class="col-md-8" ng-show="isSearching"> <!-- Ng show/ng hide when coin is added to watch list and when somebody searches for a coin -->
           Currency: {{ selected.name }} <br>
           Ticker: {{ selected.symbol }} <br>
           Rank: {{ selected.rank }} <br>
@@ -29,8 +29,8 @@
           % Change (24 Hr): {{ selected.percent_change_24h }}
 
         </div>
-        <div class="col-md-8" ng-show="addedToWatchList" ng-model="coinName">
-          <p> {{ selected.name }} Added to Watch List!</p>
+        <div class="col-md-8" ng-hide="isSearching"> <!-- Show when added to watch list -->
+           {{ coin.name }} Added to Watch List!
         </div>
       </div>
 

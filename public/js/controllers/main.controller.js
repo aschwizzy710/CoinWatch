@@ -7,6 +7,11 @@
   function MainController($scope, CoinSummaryService){
     $scope.coins = CoinSummaryService.get();
     $scope.searchCoins = searchCoins;
+    $scope.saveCoin = saveCoin;
+    $scope.isSearching = true;
+    $scope.toggle = function(){
+      $scope.isSearching = !$scope.isSearching;
+    };
     $scope.$watch(function(){
       return CoinSummaryService.get();
     }, function(){
@@ -19,7 +24,10 @@
       });
       $scope.selected = coin;
     }
-    console.log(searchCoins());
+
+    function saveCoin(coinName){
+      CoinSummaryService.create(coinName);
+    }
 
     $scope.widgetLookup = {
       "Bitcoin": "https://dc-charts.com/fw/coinbase_btc_usd_24hours_3.png",

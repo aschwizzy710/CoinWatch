@@ -1,4 +1,4 @@
-var express = ('express');
+var express = require('express');
 var router = express.Router();
 var Coin = require("../models/coin.model.js");
 

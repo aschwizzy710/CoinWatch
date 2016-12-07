@@ -9,8 +9,8 @@
     var coins = [];
     return {
       get: getAllCoins,
-      // create: createSavedCoin,
-      // delete: deleteSavedCoin
+      create: createSavedCoin,
+      delete: deleteSavedCoin
     };
 
     function init(){
@@ -33,6 +33,9 @@
           .catch(function(err){
             console.log(err);
           });
+    }
+    function deleteSavedCoin(coin){
+
     }
   }
 }());
