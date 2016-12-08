@@ -9,9 +9,8 @@
     $scope.searchCoins = searchCoins;
     $scope.saveCoin = saveCoin;
     $scope.isSearching = true;
-    $scope.toggle = function(){
-      $scope.isSearching = !$scope.isSearching;
-    };
+
+
     $scope.$watch(function(){
       return CoinSummaryService.get();
     }, function(){
@@ -23,10 +22,12 @@
         return o.name.toUpperCase() === coinName.toUpperCase();
       });
       $scope.selected = coin;
+      $scope.isSearching = true;
     }
 
     function saveCoin(coinName){
       CoinSummaryService.create(coinName);
+      $scope.isSearching = false;
     }
 
     $scope.widgetLookup = {
