@@ -6,9 +6,12 @@
 
   function CoinSummaryService($http){
     init();
+    getSavedCoinsFromServer();
     var coins = [];
+    var savedCoins = [];
     return {
       get: getAllCoins,
+      getSaved: getSavedCoins,
       create: createSavedCoin,
       delete: deleteSavedCoin
     };
@@ -25,6 +28,9 @@
     function getAllCoins(){
       return coins;
     }
+    function getSavedCoins(){
+      return savedCoins;
+    }
     function createSavedCoin(coin){
       $http.post('/coins', coin)
           .then(function(response){
@@ -36,6 +42,17 @@
     }
     function deleteSavedCoin(coin){
 
+    }
+
+    function getSavedCoinsFromServer(){
+       $http.get('/coins')
+            .then(function(response){
+              console.log(response.data);
+              savedCoins = response.data.coins;
+            })
+            .catch(function(err){
+              console.log(err);
+            });
     }
   }
 }());

@@ -6,6 +6,7 @@
 
   function MainController($scope, CoinSummaryService){
     $scope.coins = CoinSummaryService.get();
+    $scope.savedCoins = CoinSummaryService.getSaved();
     $scope.searchCoins = searchCoins;
     $scope.saveCoin = saveCoin;
     $scope.isSearching = true;
@@ -15,6 +16,12 @@
       return CoinSummaryService.get();
     }, function(){
         $scope.coins = CoinSummaryService.get();
+      });
+
+    $scope.$watch(function(){ // for the saved coin watching to know when service is sending getSavedCoins info to controller
+      return CoinSummaryService.getSaved();
+    }, function(){
+        $scope.savedCoins = CoinSummaryService.getSaved();
       });
 
       function searchCoins(coinName){

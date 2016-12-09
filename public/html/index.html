@@ -8,7 +8,7 @@
 <body>
   <div ng-controller = 'MainController'>
     <div class="container selected-coin text-center">
-      <div class="">
+      <div>
       <h1><em><strong><span style="color: white;">Coin</span><span style="color: green;">Watch</span></strong></em></h1>
       </div>
       <div class="fat-row">
@@ -33,7 +33,16 @@
            {{ coin.name }} Added to Watch List!
         </div>
       </div>
-
+      <div class="row watch-list">
+        <div class="col-md-6 col-md-offset-3">
+          <h3>Watch List</h3>
+          <ul>
+            <li ng-repeat="coin in savedCoins track by $index">
+              {{ coin.name }}
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
  <script src="https://cdn.jsdelivr.net/lodash/4.17.2/lodash.min.js"></script>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
