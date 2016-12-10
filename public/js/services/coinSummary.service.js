@@ -47,7 +47,6 @@
     function getSavedCoinsFromServer(){
        $http.get('/coins')
             .then(function(response){
-              console.log(response.data);
               savedCoins = response.data.coins;
             })
             .catch(function(err){

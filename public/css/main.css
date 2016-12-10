@@ -19,4 +19,5 @@ body {
 
 .watch-list {
   color: white;
+  border: 5px solid white;
 }

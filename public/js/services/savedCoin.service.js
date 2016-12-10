@@ -5,6 +5,6 @@
 SavedCoinService.$inject = ['$http'];
 
 function SavedCoinService($http){
-  
+
 }
 }());

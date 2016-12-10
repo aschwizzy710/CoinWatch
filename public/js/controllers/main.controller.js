@@ -9,6 +9,7 @@
     $scope.savedCoins = CoinSummaryService.getSaved();
     $scope.searchCoins = searchCoins;
     $scope.saveCoin = saveCoin;
+    $scope.getCoinInfo = getCoinInfo;
     $scope.isSearching = true;
 
 
@@ -16,12 +17,18 @@
       return CoinSummaryService.get();
     }, function(){
         $scope.coins = CoinSummaryService.get();
+        $scope.savedCoins = CoinSummaryService.getSaved()
+                                              .map(c => c.name)
+                                              .map(getCoinInfo);
       });
 
     $scope.$watch(function(){ // for the saved coin watching to know when service is sending getSavedCoins info to controller
       return CoinSummaryService.getSaved();
     }, function(){
-        $scope.savedCoins = CoinSummaryService.getSaved();
+        $scope.savedCoins = CoinSummaryService.getSaved()
+                                              .map(c => c.name)
+                                              .map(getCoinInfo);
+      console.log($scope.savedCoins);
       });
 
       function searchCoins(coinName){
@@ -31,7 +38,12 @@
       $scope.selected = coin;
       $scope.isSearching = true;
     }
-
+    function getCoinInfo(coinName){
+      var coin = _.find($scope.coins, function(o){
+      return o.name.toUpperCase() === coinName.toUpperCase();
+    });
+    return coin;
+  }
     function saveCoin(coinName){
       CoinSummaryService.create(coinName);
       $scope.isSearching = false;

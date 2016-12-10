@@ -26,19 +26,27 @@
           Rank: {{ selected.rank }} <br>
           Market Cap: {{ selected.market_cap_usd | currency}} <br>
           Price (USD/BTC): {{ selected.price_usd | currency }} {{ selected.price_btc | currency:"Ƀ " }} <br>
-          % Change (24 Hr): {{ selected.percent_change_24h }}
+          % Change (24 Hr): {{ selected.percent_change_24h | number: 2 }} %
 
         </div>
         <div class="col-md-8" ng-hide="isSearching"> <!-- Show when added to watch list -->
-           {{ coin.name }} Added to Watch List!
+           <h3>{{ coin.name }} Added to Watch List!</h3>
         </div>
       </div>
       <div class="row watch-list">
         <div class="col-md-6 col-md-offset-3">
           <h3>Watch List</h3>
+          <select ng-model="singleSelect" ng-options="coin.name for coin in savedCoins" style="color:black">
+
+          </select>
           <ul>
-            <li ng-repeat="coin in savedCoins track by $index">
-              {{ coin.name }}
+            <li ng-repeat="coin in savedCoins track by $index" ng-show='singleSelect.name === coin.name' class="well" style="list-style-type: none; color:black;">
+              Currency: {{ coin.name }} <br>
+              Ticker: {{ coin.symbol }} <br>
+              Rank: {{ coin.rank }} <br>
+              Market Cap: {{ coin.market_cap_usd | currency }} <br>
+              Price (USD/BTC): {{ coin.price_usd | currency }} {{ coin.price_btc | currency:"Ƀ " }} <br>
+              % Change (24 Hr): {{ coin.percent_change_24h | number: 2 }} %
             </li>
           </ul>
         </div>
