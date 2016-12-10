@@ -17,7 +17,7 @@
       <button ng-click="saveCoin(coin)" class="btn btn-danger">Add to Watch List</button>
       </div>
       <div class="row main-info plump-row">
-        <div class="col-md-4" ng-show="widgetLookup[selected.name] || 'http://placehold.it/350x150'"> <!-- Placeholder not working -->
+        <div class="col-md-4" ng-show="isSearching || 'http://placehold.it/350x150'"> <!-- Placeholder not working -->
           <img ng-src="{{ widgetLookup[selected.name] }}"   alt="" />
         </div>
         <div class="col-md-8" ng-show="isSearching"> <!-- Ng show/ng hide when coin is added to watch list and when somebody searches for a coin -->
@@ -30,7 +30,7 @@
 
         </div>
         <div class="col-md-8" ng-hide="isSearching"> <!-- Show when added to watch list -->
-           <h3>{{ coin.name }} Added to Watch List!</h3>
+           <h3>{{ coin.name | uppercase }} Added to Watch List!</h3>
         </div>
       </div>
       <div class="row watch-list">
