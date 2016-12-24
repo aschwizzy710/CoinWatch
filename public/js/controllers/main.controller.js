@@ -50,7 +50,7 @@
     }
 
     $scope.widgetLookup = {
-      "Bitcoin": "https://dc-charts.com/fw/coinbase_btc_usd_24hours_3.png",
+      "Bitcoin": "https://dc-charts.com/fw/bitstamp_btc_usd_24hours_2.png",
       "Litecoin": "https://dc-charts.com/fw/bitfinex_ltc_btc_24hours_3.png",
       "Dash": "https://dc-charts.com/fw/poloniex_dash_btc_24hours_3.png",
       "Dogecoin": "https://dc-charts.com/fw/poloniex_doge_btc_24hours_3.png",
